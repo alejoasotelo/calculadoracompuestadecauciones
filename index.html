@@ -1,0 +1,110 @@
+<html lang="es">
+
+<head>
+    <title>Calculadora Compuesta de Caución</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Calculadora de cauciones que toma los valores de InvertirOnline.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.3/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.3/dist/js/uikit-icons.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <style>
+        .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="calculadora" class="uk-container uk-margin-large-top">
+        <form>
+            <div class="uk-section uk-section-muted">
+
+                <h1 class="uk-text-center uk-animation-fade"><span>Calculadora Compuesta de Caución</span></h1>
+            
+
+                <div class="uk-flex uk-flex-center uk-flex-stretch">
+                    <div class="uk-width-large uk-margin-right uk-animation-slide-left">
+                        
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Monto ($)</label>
+                                <div class="uk-form-controls">
+                                    <div class="uk-inline">
+                                        <span class="uk-form-icon">$</span>
+                                        <input class="uk-input" type="text" placeholder="1000" v-model="monto">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Plazo en días</label>
+                                <div class="uk-form-controls">
+                                    <div class="uk-inline">
+                                        <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                                        <input class="uk-input" type="text" placeholder="7" v-model="plazo">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Tasa Nominal Anual (%)</label>
+                                <div class="uk-form-controls">
+                                    <div class="uk-inline">
+                                        <span class="uk-form-icon" uk-icon="icon: cog"></span>
+                                        <input class="uk-input" type="text" placeholder="30" v-model="tna">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Cantidad de veces</label>
+                                <div class="uk-form-controls">
+                                    <div class="uk-inline">
+                                        <span class="uk-form-icon" uk-icon="icon: refresh"></span>
+                                        <input class="uk-input" type="text" placeholder="1" v-model="cantidad">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="uk-width-large uk-margin-left uk-animation-slide-right">
+                        <div class="uk-card uk-margin-top uk-card-body uk-card-primary">
+                            <h3 class="uk-card-title">Resultados</h3>
+                            
+                            <transition name="fade"v-bind:name="ganancia">
+                                <p>
+                                    Intereses: <span class="uk-text-bold">${{animIntereses.toFixed(2)}}</span><br>
+                                    Monto Final: <span class="uk-text-bold">${{animGanancia.toFixed(2)}}</span><br>
+                                </p>
+                            </transition>
+                            <h4>Gastos</h4>
+                            <p>
+                                Comision: <span class="uk-text-warning">${{animComision.toFixed(2)}}</span><br>
+                                Derechos de mercado: <span class="uk-text-warning">${{animDerechos.toFixed(2)}}</span><br>
+                                IVA: <span class="uk-text-warning">${{animIva.toFixed(2)}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        <div class="uk-text-center">
+            Powered by <a href="https://alejosotelo.com.ar" target="_blank">Alejo Sotelo</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="./app.js"></script>
+</body>
+
+</html>
